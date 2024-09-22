@@ -1,7 +1,7 @@
 import streamlit as st
 
 # 타이틀 적용 예시
-st.title('JINNY's Homepage:princess::heartbeat:')
+st.title("JINNY's Homepage:princess::heartbeat:")
 
 # Header 적용
 st.header('Profile')
