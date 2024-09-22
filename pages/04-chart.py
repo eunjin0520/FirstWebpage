@@ -6,7 +6,7 @@ import numpy as np
 
 #한글 폰트 설정
 import matplotlib.pyplot as plt
-!pip install koreanize-matplotlib
+#!pip install koreanize-matplotlib
 import koreanize_matplotlib
 
 # DataFrame 생성
