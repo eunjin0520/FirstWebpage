@@ -22,7 +22,7 @@ st.markdown('Instagram: **zinnyv.0.v** :red[맞팔해요~]')
 
 st.subheader('좌우명')
 sample_code = '''
-def function():
+def DoMyBest():
     print('Life is too short. You need python')
 '''
 st.code(sample_code, language="python")
