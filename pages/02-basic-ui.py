@@ -5,13 +5,18 @@ import datetime
 
 # 버튼 클릭
 button = st.button('버튼을 눌러보세요')
-
 if button:
     st.write(':blue[버튼]이 눌렸습니다 :sparkles:')
 
 
+
+
+
+
+
 # 파일 다운로드 버튼
 # 샘플 데이터 생성
+# Dataframe이란, pandas라이브러리에서 제공하는 2차원 데이터 구조(엑셀과 유사)
 dataframe = pd.DataFrame({
     'first column': [1, 2, 3, 4],
     'second column': [10, 20, 30, 40],
@@ -22,12 +27,16 @@ st.download_button(
     label='CSV로 다운로드',
     data=dataframe.to_csv(), 
     file_name='sample.csv', 
-    mime='text/csv'
+    mime='text/csv'  #데이터 유형
 )
+
+
+
+
+
 
 # 체크 박스
 agree = st.checkbox('동의 하십니까?')
-
 if agree:
     st.write('동의 해주셔서 감사합니다 :100:')
 
@@ -43,6 +52,12 @@ elif mbti == 'ENFP':
 else:
     st.write("당신에 대해 :red[알고 싶어요]:grey_exclamation:")
 
+
+
+
+
+
+
 # 선택 박스
 mbti = st.selectbox(
     '당신의 MBTI는 무엇입니까?',
@@ -57,13 +72,25 @@ elif mbti == 'ENFP':
 else:
     st.write("당신에 대해 :red[알고 싶어요]:grey_exclamation:")
 
+
+
+
+
+
+
+
 # 다중 선택 박스
 options = st.multiselect(
-    '당신이 좋아하는 과일은 뭔가요?',
-    ['망고', '오렌지', '사과', '바나나'],
-    ['망고', '오렌지'])
+    '당신이 좋아하는 과일은 뭔가요?',      #질문
+    ['망고', '오렌지', '사과', '바나나'], #선택옵션
+    ['망고', '오렌지'])                  #DEFAULT
 
 st.write(f'당신의 선택은: :red[{options}] 입니다.')
+
+
+
+
+
 
 
 # 슬라이더
@@ -80,6 +107,15 @@ start_time = st.slider(
     step=datetime.timedelta(hours=1),
     format="MM/DD/YY - HH:mm")
 st.write("선택한 약속 시간:", start_time)
+
+
+
+
+
+
+
+
+
 
 
 # 텍스트 입력
