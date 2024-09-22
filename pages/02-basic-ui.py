@@ -95,17 +95,17 @@ st.write(f'당신의 선택은: :red[{options}] 입니다.')
 
 # 슬라이더
 values = st.slider(
-    '범위의 값을 다음과 같이 지정할 수 있어요:sparkles:',
-    0.0, 100.0, (25.0, 75.0))
+    '범위의 값을 다음과 같이 지정할 수 있어요:sparkles:',  #질문
+    0.0, 100.0, (25.0, 75.0))                           #최소값,최대값,초기값
 st.write('선택 범위:', values)
 
 start_time = st.slider(
-    "언제 약속을 잡는 것이 좋을까요?",
-    min_value=dt(2020, 1, 1, 0, 0), 
-    max_value=dt(2020, 1, 7, 23, 0),
-    value=dt(2020, 1, 3, 12, 0),
-    step=datetime.timedelta(hours=1),
-    format="MM/DD/YY - HH:mm")
+    "언제 약속을 잡는 것이 좋을까요?",    #질문
+    min_value=dt(2020, 1, 1, 0, 0),    #최소값
+    max_value=dt(2020, 1, 7, 23, 0),   #최대값
+    value=dt(2020, 1, 3, 12, 0),       #초기값
+    step=datetime.timedelta(hours=1),  #슬라이더가 움직일 수 있는 단위(기본값1)
+    format="MM/DD/YY - HH:mm")         #숫자 표시 형식
 st.write("선택한 약속 시간:", start_time)
 
 
@@ -127,10 +127,10 @@ st.write(f'당신이 선택한 여행지: :violet[{title}]')
 
 # 숫자 입력
 number = st.number_input(
-    label='나이를 입력해 주세요.', 
-    min_value=10, 
-    max_value=100, 
-    value=30,
-    step=5
+    label='나이를 입력해 주세요.', #질문
+    min_value=10,                #최소값
+    max_value=100,               #최대값
+    value=30,                    #기본값
+    step=5                       #값이 증가, 감소하는 단위
 )
 st.write('당신이 입력하신 나이는:  ', number)
