@@ -9,20 +9,20 @@ if st.button("인사말 생성하기"):
 import streamlit as st
 
 # 타이틀 적용 예시
-st.title('이것은 타이틀 입니다')
+st.title('타이틀은 페이지 제목')
 
 # 특수 이모티콘 삽입 예시
 # emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 st.title('스마일 :sunglasses:')
 
 # Header 적용
-st.header('헤더를 입력할 수 있어요! :sparkles:')
+st.header('헤더는 섹션의 제목 :sparkles:')
 
 # Subheader 적용
-st.subheader('이것은 subheader 입니다')
+st.subheader('subheader는 섹션의 부제목')
 
 # 캡션 적용
-st.caption('캡션을 한 번 넣어 봤습니다')
+st.caption('캡션은 짧은 설명을 추가하는 것! ')
 
 # 코드 표시
 sample_code = '''
@@ -41,4 +41,5 @@ st.markdown("텍스트의 색상을 :green[초록색]으로, 그리고 **:blue[�
 st.markdown(":green[$\sqrt{x^2+y^2}=1$] 와 같이 latex 문법의 수식 표현도 가능합니다 :pencil:")
 
 # LaTex 수식 지원
+# 복잡한 수학공식, 기호 등을 웹 페이지에서 깔끔한 수식으로 변환
 st.latex(r'\sqrt{x^2+y^2}=1')
