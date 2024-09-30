@@ -138,16 +138,33 @@ title = st.text_input(
 )
 st.write(f'당신이 남긴 메세지: :violet[{title}]')
 
-
-st.subheader('방명록')
 # 다중 선택 박스
-options = st.multiselect(
-    '당신이 좋아하는 과일은 뭔가요?',      #질문
-    ['망고', '오렌지', '사과', '바나나'], #선택옵션
-    ['망고', '오렌지'])                  #DEFAULT
+st.subheader('여행지 추천') 
+destinations = st.multiselect(
+    '가보고 싶은 여행지를 선택해 주세요.',  # 질문
+    ['파리', '뉴욕', '도쿄', '시드니', '로마'], # 선택 옵션
+    ['파리', '도쿄'])                        # 기본 선택 옵션
 
-st.write(f'당신의 선택은: :red[{options}] 입니다.')
+# 사용자가 선택한 여행지를 출력
+if destinations:
+    st.write(f'당신이 가보고 싶은 여행지는: :blue[{", ".join(destinations)}] 입니다.')
+else:
+    st.write('아직 가보고 싶은 여행지를 선택하지 않으셨네요.')
 
+# 선택한 여행지에 맞는 맞춤 메시지
+if '파리' in destinations:
+    st.write('파리는 예술과 패션의 도시로, 에펠탑을 꼭 방문해야 합니다!')
+if '뉴욕' in destinations:
+    st.write('뉴욕은 활기찬 도시로, 타임스퀘어와 센트럴 파크가 유명합니다.')
+if '도쿄' in destinations:
+    st.write('도쿄는 현대와 전통이 공존하는 도시로, 신주쿠와 아사쿠사에서 멋진 경험을 할 수 있습니다.')
+if '시드니' in destinations:
+    st.write('시드니는 아름다운 항구와 오페라 하우스로 유명합니다. 서핑도 잊지 마세요!')
+if '로마' in destinations:
+    st.write('로마는 역사와 문화가 풍부한 도시로, 콜로세움과 바티칸은 필수 방문지입니다.')
+
+
+st.subheader('약속 잡기') 
 # 슬라이더
 values = st.slider(
     '범위의 값을 다음과 같이 지정할 수 있어요:sparkles:',  #질문
@@ -156,9 +173,9 @@ st.write('선택 범위:', values)
 
 start_time = st.slider(
     "언제 약속을 잡는 것이 좋을까요?",    #질문
-    min_value=dt(2020, 1, 1, 0, 0),    #최소값
-    max_value=dt(2020, 1, 7, 23, 0),   #최대값
-    value=dt(2020, 1, 3, 12, 0),       #초기값
+    min_value=dt(2024, 1, 1, 0, 0),    #최소값
+    max_value=dt(2020, 12, 29, 23, 0),   #최대값
+    value=dt(2024, 10, 1, 12, 0),       #초기값
     step=datetime.timedelta(hours=1),  #슬라이더가 움직일 수 있는 단위(기본값1)
     format="MM/DD/YY - HH:mm")         #숫자 표시 형식
 st.write("선택한 약속 시간:", start_time)
