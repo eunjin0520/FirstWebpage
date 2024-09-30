@@ -17,9 +17,10 @@ if button:
 # 파일 다운로드 버튼
 # 샘플 데이터 생성
 # Dataframe이란, pandas라이브러리에서 제공하는 2차원 데이터 구조(엑셀과 유사)
-dataframe = pd.DataFrame({
-    'first column': [국, 영, 수, 과, 사],
+dataframe = pd.DataFrame({   
+    'first column': ['국', '영', '수', '과', '사']
     'second column': [10, 20, 30, 40, 50] 
+    'third column': ['♥','♥','♥','♥','♥']
 })
 
 # 다운로드 버튼 연결
