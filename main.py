@@ -30,6 +30,7 @@ def DoMyBest():
 '''
 st.code(sample_code, language="python")
 
+st.subheader('나이')
 # 숫자 입력
 number = st.number_input(
     label='당신의 나이를 입력해 주세요.', #질문
@@ -41,24 +42,25 @@ number = st.number_input(
 st.write('선생님과 나이 차이는:  ', 20-number)
 
 
-
+st.subheader('Secret')
 # 파일 다운로드 버튼
 # 샘플 데이터 생성
 # Dataframe이란, pandas라이브러리에서 제공하는 2차원 데이터 구조(엑셀과 유사)
 dataframe = pd.DataFrame({   
-    'first column': ['kor','eng','math','science'],
-    'second column': [10, 20, 30, 40]  
+    'Food': ['salad','pasta','DDokbokKi','pizza'],
+    'Place': ['School', 'HanRiver', 'Flower', 'Library']  
+    'Activity':['movie','baking','bicycle','Picture']
 })
 
 # 다운로드 버튼 연결
 st.download_button(
-    label='CSV로 성적표 다운로드',
+    label='선생님이 3-2와 하고 싶은것',
     data=dataframe.to_csv(),     # dataframe을 csv 형태로 변환
-    file_name='sample.csv',          
+    file_name='wish list.csv',          
     mime='text/csv'              #데이터 유형
 )
 # 체크 박스
-agree = st.checkbox('개인정보 수집 및 활용에 동의 하십니까?')
+agree = st.checkbox('소원을 이루어줄 것을 약속 하십니까?')
 if agree:
     st.write('동의 해주셔서 감사합니다 :100:')
 
