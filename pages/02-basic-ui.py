@@ -20,7 +20,7 @@ if button:
 dataframe = pd.DataFrame({
     'first column': [국, 영, 수, 과, 사],
     'second column': [10, 20, 30, 40, 50],
-    'third column': [♥, ♥, ♥, ♥, ♥]
+    'third column': [1, 2, 3, 4, 5]
 })
 
 # 다운로드 버튼 연결
