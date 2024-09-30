@@ -18,16 +18,17 @@ if button:
 # 샘플 데이터 생성
 # Dataframe이란, pandas라이브러리에서 제공하는 2차원 데이터 구조(엑셀과 유사)
 dataframe = pd.DataFrame({
-    'first column': [1, 2, 3, 4],
-    'second column': [10, 20, 30, 40],
+    'first column': [국, 영, 수, 과, 사],
+    'second column': [10, 20, 30, 40, 50],
+    'third column': [♥, ♥, ♥, ♥, ♥]
 })
 
 # 다운로드 버튼 연결
 st.download_button(
-    label='CSV로 다운로드',
-    data=dataframe.to_csv(), 
-    file_name='sample.csv', 
-    mime='text/csv'  #데이터 유형
+    label='CSV로 성적표 다운로드',
+    data=dataframe.to_csv(),     # dataframe을 csv 형태로 변환
+    file_name='sample.csv',          
+    mime='text/csv'              #데이터 유형
 )
 
 
