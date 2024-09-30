@@ -48,7 +48,7 @@ st.subheader('Secret')
 # Dataframe이란, pandas라이브러리에서 제공하는 2차원 데이터 구조(엑셀과 유사)
 dataframe = pd.DataFrame({   
     'Food': ['salad','pasta','DDokbokKi','pizza'],
-    'Place': ['School', 'HanRiver', 'Flower', 'Library']  
+    'Place': ['School', 'HanRiver', 'Flower', 'Library'],
     'Activity':['movie','baking','bicycle','Picture']
 })
 
