@@ -40,11 +40,7 @@ number = st.number_input(
 )
 st.write('선생님과 나이 차이는:  ', 20-number)
 
-# 버튼 클릭
-button = st.button('Google')
-if button:
-    # 하이퍼링크 연결
-    st.markdown("[구글로 이동하기](https://www.google.com)") 
+
 
 # 파일 다운로드 버튼
 # 샘플 데이터 생성
@@ -66,6 +62,9 @@ agree = st.checkbox('개인정보 수집 및 활용에 동의 하십니까?')
 if agree:
     st.write('동의 해주셔서 감사합니다 :100:')
 
+
+
+st.subheader('혈액형')
 # 라디오 선택 버튼
 blood_type = st.radio(
     '당신의 혈액형은 무엇입니까?',
@@ -85,6 +84,13 @@ if blood_type in blood_type_descriptions:
 else:
     st.write("당신에 대해 :red[알고 싶어요]:grey_exclamation:")
 
+
+st.subheader('MBTI')
+# 버튼 클릭
+button = st.button('티니핑 MBTI 검사')
+if button:
+    # 하이퍼링크 연결
+    st.markdown("[구글로 이동하기](https://smore.im/quiz/5xjJqtXtZ1?tm)") 
 
 # 선택 박스
 mbti = st.selectbox(
@@ -120,6 +126,18 @@ if mbti in mbti_descriptions:
 else:
     st.write("당신에 대해 :red[알고 싶어요]:grey_exclamation:")
 
+
+
+st.subheader('방명록')
+ # 텍스트 입력
+title = st.text_input(
+    label='선생님에게 하고 싶은 말이 있나요?', 
+    placeholder='방명록을 남겨 주세요'
+)
+st.write(f'당신이 남긴 메세지: :violet[{title}]')
+
+
+st.subheader('방명록')
 # 다중 선택 박스
 options = st.multiselect(
     '당신이 좋아하는 과일은 뭔가요?',      #질문
@@ -142,12 +160,5 @@ start_time = st.slider(
     step=datetime.timedelta(hours=1),  #슬라이더가 움직일 수 있는 단위(기본값1)
     format="MM/DD/YY - HH:mm")         #숫자 표시 형식
 st.write("선택한 약속 시간:", start_time)
-
- # 텍스트 입력
-title = st.text_input(
-    label='가고 싶은 여행지가 있나요?', 
-    placeholder='여행지를 입력해 주세요'
-)
-st.write(f'당신이 선택한 여행지: :violet[{title}]')
 
 
