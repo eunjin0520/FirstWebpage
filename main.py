@@ -163,21 +163,12 @@ if '시드니' in destinations:
 if '로마' in destinations:
     st.write('로마는 역사와 문화가 풍부한 도시로, 콜로세움과 바티칸은 필수 방문지입니다.')
 
+ 
+st.subheader('음악 볼륨 조절')
 
-st.subheader('약속 잡기') 
-# 슬라이더
-values = st.slider(
-    '범위의 값을 다음과 같이 지정할 수 있어요:sparkles:',  #질문
-    0.0, 100.0, (25.0, 75.0))                           #최소값,최대값,초기값
-st.write('선택 범위:', values)
-
-start_time = st.slider(
-    "언제 약속을 잡는 것이 좋을까요?",    #질문
-    min_value=dt(2024, 1, 1, 0, 0),    #최소값
-    max_value=dt(2020, 12, 29, 23, 0),   #최대값
-    value=dt(2024, 10, 1, 12, 0),       #초기값
-    step=datetime.timedelta(hours=1),  #슬라이더가 움직일 수 있는 단위(기본값1)
-    format="MM/DD/YY - HH:mm")         #숫자 표시 형식
-st.write("선택한 약속 시간:", start_time)
-
+# 볼륨 조절 슬라이더
+volume = st.slider(
+    '볼륨을 조절하세요:',
+    0, 100, 50)  # 최소값, 최대값, 초기값
+st.write(f'현재 설정된 볼륨은 {volume}% 입니다.')
 
