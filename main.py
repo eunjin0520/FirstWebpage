@@ -67,10 +67,32 @@ if agree:
     st.write('동의 해주셔서 감사합니다 :100:')
 
 # 라디오 선택 버튼
-mbti = st.radio(
+blood_type = st.radio(
+    '당신의 혈액형은 무엇입니까?',
+    ('A형', 'B형', 'O형', 'AB형', '선택지 없음'))
+
+# 각 혈액형에 대한 설명
+blood_type_descriptions = {
+    'A형': '당신은 :blue[꼼꼼하고 신중한 성격]을 가지고 있네요.',
+    'B형': '당신은 :green[자유롭고 개성적인 성격]을 가지고 있네요.',
+    'O형': '당신은 :red[사교적이고 자신감 있는 성격]을 가지고 있네요.',
+    'AB형': '당신은 :purple[독특하고 창의적인 성격]을 가지고 있네요.'
+}
+
+# 선택된 혈액형에 따라 설명 출력
+if blood_type in blood_type_descriptions:
+    st.write(blood_type_descriptions[blood_type])
+else:
+    st.write("당신에 대해 :red[알고 싶어요]:grey_exclamation:")
+
+
+# 선택 박스
+mbti = st.selectbox(
     '당신의 MBTI는 무엇입니까?',
     ('ISTJ', 'ISFJ', 'INFJ', 'INTJ', 'ISTP', 'ISFP', 'INFP', 'INTP',
-     'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ', '선택지 없음'))
+     'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ', '선택지 없음'),
+    index=16  # 기본값을 "선택지 없음"으로 설정
+)
 
 # 각 MBTI에 대한 설명
 mbti_descriptions = {
@@ -95,21 +117,6 @@ mbti_descriptions = {
 # 선택된 MBTI에 따라 설명 출력
 if mbti in mbti_descriptions:
     st.write(mbti_descriptions[mbti])
-else:
-    st.write("당신에 대해 :red[알고 싶어요]:grey_exclamation:")
-
-
-# 선택 박스
-mbti = st.selectbox(
-    '당신의 MBTI는 무엇입니까?',
-    ('ISTJ', 'ENFP', '선택지 없음'), 
-    index=2
-)
-
-if mbti == 'ISTJ':
-    st.write('당신은 :blue[현실주의자] 이시네요')
-elif mbti == 'ENFP':
-    st.write('당신은 :green[활동가] 이시네요')
 else:
     st.write("당신에 대해 :red[알고 싶어요]:grey_exclamation:")
 
