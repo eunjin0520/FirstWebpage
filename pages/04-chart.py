@@ -5,9 +5,9 @@ import seaborn as sns
 import numpy as np
 
 #한글 폰트 설정
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 #!pip install koreanize-matplotlib
-import koreanize_matplotlib
+#import koreanize_matplotlib
 
 # DataFrame 생성
 data = pd.DataFrame({
