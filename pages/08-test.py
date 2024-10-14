@@ -1,12 +1,15 @@
 import streamlit as st
-import matplotlib.pyplot as plt
+import plotly.express as px
+import pandas as pd
 
-# 예제 데이터
-x = [1, 2, 3, 4, 5]
-y = [1, 4, 9, 16, 25]
+# 샘플 데이터 생성
+data = pd.DataFrame({
+    'x': [1, 2, 3, 4, 5],
+    'y': [1, 4, 9, 16, 25]
+})
 
-# 그래프 생성
-plt.plot(x, y)
+# Plotly를 사용한 차트 생성
+fig = px.line(data, x='x', y='y', title='Sample Plotly Line Chart')
 
-# Streamlit에서 그래프 출력
-st.pyplot(plt)
+# Streamlit에서 Plotly 차트 표시
+st.plotly_chart(fig)
