@@ -1,15 +1,18 @@
-import streamlit as st
-import plotly.express as px
 import pandas as pd
+import streamlit as st
 
-# 샘플 데이터 생성
-data = pd.DataFrame({
-    'x': [1, 2, 3, 4, 5],
-    'y': [1, 4, 9, 16, 25]
-})
+@st.cache_data
+def get_data_from_excel():
+    df = pd.read_excel(
+        io="supermarkt_sales.xlsx",
+        engine="openpyxl",  # openpyxl 엔진을 사용하여 Excel 파일 읽기
+        sheet_name="Sales",
+        skiprows=3,
+        usecols="B:R",
+        nrows=1000,
+    )
+    return df
 
-# Plotly를 사용한 차트 생성
-fig = px.line(data, x='x', y='y', title='Sample Plotly Line Chart')
-
-# Streamlit에서 Plotly 차트 표시
-st.plotly_chart(fig)
+# Streamlit UI 구성
+df = get_data_from_excel()
+st.write(df)  # 데이터프레임을 Streamlit으로 출력
