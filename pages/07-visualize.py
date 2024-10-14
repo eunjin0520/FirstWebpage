@@ -1,13 +1,11 @@
-
-
 import pandas as pd  # pip install pandas openpyxl
-import plotly.express as px  # pip install plotly-express
 import streamlit as st  # pip install streamlit
+import numpy as np  # pip install numpy
 
-# emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
+# Streamlit 대시보드 설정
 st.set_page_config(page_title="Sales Dashboard", page_icon=":bar_chart:", layout="wide")
 
-# ---- READ EXCEL ----
+# ---- EXCEL 파일 읽기 ----
 @st.cache_data
 def get_data_from_excel():
     df = pd.read_excel(
@@ -18,13 +16,13 @@ def get_data_from_excel():
         usecols="B:R",
         nrows=1000,
     )
-    # Add 'hour' column to dataframe
+    # 'hour' 열 추가
     df["hour"] = pd.to_datetime(df["Time"], format="%H:%M:%S").dt.hour
     return df
 
 df = get_data_from_excel()
 
-# ---- SIDEBAR ----
+# ---- 사이드바 ----
 st.sidebar.header("Please Filter Here:")
 city = st.sidebar.multiselect(
     "Select the City:",
@@ -44,20 +42,21 @@ gender = st.sidebar.multiselect(
     default=df["Gender"].unique()
 )
 
+# 필터링된 데이터프레임 생성
 df_selection = df.query(
-    "City == @city & Customer_type ==@customer_type & Gender == @gender"
+    "City == @city & Customer_type == @customer_type & Gender == @gender"
 )
 
-# Check if the dataframe is empty:
+# 데이터프레임이 비어 있는지 확인
 if df_selection.empty:
     st.warning("No data available based on the current filter settings!")
-    st.stop() # This will halt the app from further execution.
+    st.stop()  # 앱 실행 중지
 
-# ---- MAINPAGE ----
+# ---- 메인 페이지 ----
 st.title(":bar_chart: Sales Dashboard")
 st.markdown("##")
 
-# TOP KPI's
+# TOP KPI
 total_sales = int(df_selection["Total"].sum())
 average_rating = round(df_selection["Rating"].mean(), 1)
 star_rating = ":star:" * int(round(average_rating, 0))
@@ -76,45 +75,21 @@ with right_column:
 
 st.markdown("""---""")
 
-# SALES BY PRODUCT LINE [BAR CHART]
+# 제품군별 판매량 [바 차트]
 sales_by_product_line = df_selection.groupby(by=["Product line"])[["Total"]].sum().sort_values(by="Total")
-fig_product_sales = px.bar(
-    sales_by_product_line,
-    x="Total",
-    y=sales_by_product_line.index,
-    orientation="h",
-    title="<b>Sales by Product Line</b>",
-    color_discrete_sequence=["#0083B8"] * len(sales_by_product_line),
-    template="plotly_white",
-)
-fig_product_sales.update_layout(
-    plot_bgcolor="rgba(0,0,0,0)",
-    xaxis=(dict(showgrid=False))
-)
 
-# SALES BY HOUR [BAR CHART]
+# Streamlit의 내장 바 차트 사용
+st.subheader("Sales by Product Line")
+st.bar_chart(sales_by_product_line)
+
+# 시간별 판매량 [바 차트]
 sales_by_hour = df_selection.groupby(by=["hour"])[["Total"]].sum()
-fig_hourly_sales = px.bar(
-    sales_by_hour,
-    x=sales_by_hour.index,
-    y="Total",
-    title="<b>Sales by hour</b>",
-    color_discrete_sequence=["#0083B8"] * len(sales_by_hour),
-    template="plotly_white",
-)
-fig_hourly_sales.update_layout(
-    xaxis=dict(tickmode="linear"),
-    plot_bgcolor="rgba(0,0,0,0)",
-    yaxis=(dict(showgrid=False)),
-)
 
+# Streamlit의 내장 바 차트 사용
+st.subheader("Sales by Hour")
+st.bar_chart(sales_by_hour)
 
-left_column, right_column = st.columns(2)
-left_column.plotly_chart(fig_hourly_sales, use_container_width=True)
-right_column.plotly_chart(fig_product_sales, use_container_width=True)
-
-
-# ---- HIDE STREAMLIT STYLE ----
+# ---- 스타일 숨기기 ----
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
