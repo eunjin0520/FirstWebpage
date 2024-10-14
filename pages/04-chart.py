@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 # DataFrame 생성
 data = pd.DataFrame({
     '이름': ['영식', '철수', '영희'],
