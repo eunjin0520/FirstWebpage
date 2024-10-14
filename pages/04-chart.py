@@ -21,7 +21,7 @@ st.pyplot(fig)
 
 # Seaborn barplot (새로운 fig와 ax)
 fig2, ax2 = plt.subplots()
-sns.barplot(x='이름', y='나이', data=data, ax=ax2, palette='Set2')
+#sns.barplot(x='이름', y='나이', data=data, ax=ax2, palette='Set2')
 st.pyplot(fig2)
 
 #############
